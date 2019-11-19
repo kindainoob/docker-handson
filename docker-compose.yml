@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports: 
+      - 8888:80
+    volumes: 
+      - ./html:/var/www/html
+      - ./docker/nginx/:/etc/nginx/conf.d/
+  golang:
+    build: ./docker/golang
+    container_name: golang
+    ports:
+      - 8080:8080
+    volumes:
+      - ./go:/golang
+    
