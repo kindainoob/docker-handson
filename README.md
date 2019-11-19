@@ -10,9 +10,9 @@
 - docker ps
     - コンテナの起動状況を確認するコマンド
 - docker stop
-    - コンテナを止めるコマンド
+    - コンテナを止めるコマンド(ころころする)
 - docker rm
-    - コンテナを削除するコマンド
+    - コンテナを削除するコマンド(成仏してクレメンス)
 
 # docker run　のオプション
 - iオプション -i
@@ -32,6 +32,16 @@
 - rmオプション --rm
     - コンテナをstopしたら自動でrmする
 
+**オプションitdはハッピーセット**
+
+# docker run の実際の例
+```
+$ docker run -itd --name python -v $(PWD):/py -p 8000:8000 -w="/py" python
+
+$ docker run -itd --name [CONTAINER NAME] -v $(PWD):[CONTAINER DIRCTORY] -p [LOCAL PORT]:[CONTAINER PORT] -w="[CONTAINER DIRCTORY]" [IMAGE NAME]
+```
+
+$(PWD) はローカルのカレントディレクトリを展開(pwdコマンドの実行)
 # docker-compose
 docker-compose.ymlにコンテナの概要を記述し、Dockerファイルを用いてコンテナの詳細を定義する。
 とりあえず触ってみようか
@@ -65,4 +75,7 @@ docker-compose.ymlにコンテナの概要を記述し、Dockerファイルを�
 
 - docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
     - 全てのコンテナをなきものにする
+
+
+
 
